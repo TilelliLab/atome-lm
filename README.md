@@ -66,7 +66,7 @@ the reversal in [`HONEST_RESULTS.md`](HONEST_RESULTS.md).
 
 ## Why
 
-Cloud LLMs are a fine fit for `chat.gpt.com`. They are not a fit for a $2 microcontroller stuck on a wall in a remote sensor, a hearing aid, a battery-powered toy, or a thermostat. Atome LM is the model design end of that constraint:
+Datacenter LLMs assume datacenter RAM. A $2 microcontroller stuck on a wall in a remote sensor, a hearing aid, a battery-powered toy, or a thermostat doesn't have it. Atome LM is the model design end of that constraint:
 
 - **Ternary weights** (`{-α, 0, +α}` per tensor, BitNet b1.58 style). No float multiplies in the matmul at inference.
 - **3-pathway block** (local depthwise conv, diagonal SSM, top-k sparse attention) mixed by a per-token soft router. Designed to match the Atome C99 engine struct exactly so trained checkpoints export to flash and run with **bit-exact parity** between Python and C.

@@ -10,7 +10,7 @@ Read this first. ~5 minute orientation for anyone (human or agent) coming to the
 
 - License: Apache 2.0
 - Tests: `pytest -q` → expect **146 passed, 0 skipped** (1 skip if `qemu-system-arm` is missing)
-- Three trained checkpoints ship in `checkpoints/`: `atome_944k.bin` (the 60K-active demo blob), `atome_1m_v1.pt` (its PyTorch source), and `vanilla_1m_v1.pt` (the FP32 baseline used for the HONEST_RESULTS A/B). Anything *else* matching `*.pt`/`*.atome*`/`*.bin` is gitignored. To train from scratch instead, use `scripts/train_demo.py` (~30 min CPU).
+- Three trained checkpoints ship in `checkpoints/`: `atome_944k.bin` (271 KB packed C-engine blob — the 944K-parameter demo model in `ATOME01` format), `atome_1m_v1.pt` (the PyTorch source that produced it), and `vanilla_1m_v1.pt` (the FP32 vanilla GPT baseline used for the HONEST_RESULTS A/B). Anything *else* matching `*.pt`/`*.atome*`/`*.bin` is gitignored. To train from scratch instead, use `scripts/train_demo.py` (~30 min CPU).
 
 ## Why this exists
 
