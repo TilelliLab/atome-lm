@@ -1,0 +1,47 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+build/
+
+# Trained checkpoints — too big and binary, EXCEPT the three released artifacts
+# (944K demo blob + its PyTorch source + the vanilla FP32 baseline used for
+# the HONEST_RESULTS reversal A/B). These are tracked.
+checkpoints/*.pt
+checkpoints/*.atome
+checkpoints/*.atome2
+checkpoints/*.bin
+checkpoints/ab_sweep/
+!checkpoints/atome_944k.bin
+!checkpoints/atome_1m_v1.pt
+!checkpoints/vanilla_1m_v1.pt
+
+# Generated corpus + on-disk fetch cache (sample.txt is intentionally tracked)
+data/*.txt
+!data/sample.txt
+.corpus_cache/
+
+# Generated firmware artifacts
+c_engine/targets/*/model_data.h
+c_engine/targets/*/prompt_data.h
+c_engine/targets/*/firmware.elf
+c_engine/targets/*/firmware.map
+c_engine/targets/*/*.o
+
+# Distribution kit zips and source tarballs
+atome-research-kit-*.zip
+atomelm-site.zip
+dist/*.tar.gz
+dist/*.zip
+
+# Drafts and editor cruft
+*.draft.txt
+.DS_Store
+.idea/
+.vscode/
+
+# Local venv
+.venv/
+venv/
+

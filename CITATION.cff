@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Atome LM: a tiny ternary language model for microcontroller deployment"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - name: "Atome LM contributors"
+url: "https://atomelm.com"
+version: "0.3.0"
+date-released: 2026-05-21
+license: Apache-2.0
+keywords:
+  - "language model"
+  - "ternary"
+  - "bitnet"
+  - "microcontroller"
+  - "edge-ai"
+  - "tinyml"

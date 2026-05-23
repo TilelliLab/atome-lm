@@ -1,0 +1,19 @@
+Atome LM
+Copyright 2026 Atome LM contributors (atomelm.com)
+
+This product includes software developed by the Atome LM project.
+
+The architecture builds on prior published work:
+  - BitNet b1.58 / 1-bit LLMs (Ma et al., 2024; Wang et al., 2023)
+  - Mamba state-space models (Gu and Dao, 2023)
+  - Top-k sparse attention (various)
+
+Licensed under the Apache License, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License. You may
+obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Trained model weights are not part of this open-source release.
+Commercial integration support, the Atome Secure Boot Pack, and other
+deployment services are available separately — see atomelm.com.

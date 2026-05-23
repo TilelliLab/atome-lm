@@ -1,0 +1,323 @@
+{
+  "config": {
+    "data": "data/tinystories.txt",
+    "steps": 1500,
+    "seq_len": 64,
+    "batch_size": 16,
+    "lr": 0.0003,
+    "seeds": 3,
+    "torch_threads": 4
+  },
+  "results": [
+    {
+      "name": "atome_60k_ternary",
+      "seed": 0,
+      "kind": "atome_ternary",
+      "params": 60800,
+      "disk_bytes": 15456,
+      "train_seconds": 199.5,
+      "final_loss": 1.987,
+      "bpb": 2.9105,
+      "perplexity": 7.519
+    },
+    {
+      "name": "atome_60k_ternary",
+      "seed": 1,
+      "kind": "atome_ternary",
+      "params": 60800,
+      "disk_bytes": 15456,
+      "train_seconds": 315.8,
+      "final_loss": 2.1283,
+      "bpb": 2.9254,
+      "perplexity": 7.597
+    },
+    {
+      "name": "atome_60k_ternary",
+      "seed": 2,
+      "kind": "atome_ternary",
+      "params": 60800,
+      "disk_bytes": 15456,
+      "train_seconds": 346.4,
+      "final_loss": 2.0103,
+      "bpb": 3.0364,
+      "perplexity": 8.205
+    },
+    {
+      "name": "atome_60k_power3",
+      "seed": 0,
+      "kind": "atome_power3",
+      "params": 60800,
+      "disk_bytes": 23056,
+      "train_seconds": 163.5,
+      "final_loss": 1.8822,
+      "bpb": 2.84,
+      "perplexity": 7.16
+    },
+    {
+      "name": "atome_60k_power3",
+      "seed": 1,
+      "kind": "atome_power3",
+      "params": 60800,
+      "disk_bytes": 23056,
+      "train_seconds": 166.2,
+      "final_loss": 2.0502,
+      "bpb": 2.9219,
+      "perplexity": 7.578
+    },
+    {
+      "name": "atome_60k_power3",
+      "seed": 2,
+      "kind": "atome_power3",
+      "params": 60800,
+      "disk_bytes": 23056,
+      "train_seconds": 171.9,
+      "final_loss": 1.918,
+      "bpb": 2.8992,
+      "perplexity": 7.46
+    },
+    {
+      "name": "atome_no_local",
+      "seed": 0,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 110.1,
+      "final_loss": 2.2222,
+      "bpb": 3.1874,
+      "perplexity": 9.11
+    },
+    {
+      "name": "atome_no_local",
+      "seed": 1,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 97.5,
+      "final_loss": 2.218,
+      "bpb": 3.1171,
+      "perplexity": 8.677
+    },
+    {
+      "name": "atome_no_local",
+      "seed": 2,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 96.8,
+      "final_loss": 2.2627,
+      "bpb": 3.1983,
+      "perplexity": 9.179
+    },
+    {
+      "name": "atome_no_state",
+      "seed": 0,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 72.7,
+      "final_loss": 2.1532,
+      "bpb": 3.0409,
+      "perplexity": 8.23
+    },
+    {
+      "name": "atome_no_state",
+      "seed": 1,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 71.6,
+      "final_loss": 2.1485,
+      "bpb": 2.9728,
+      "perplexity": 7.85
+    },
+    {
+      "name": "atome_no_state",
+      "seed": 2,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 73.3,
+      "final_loss": 2.0997,
+      "bpb": 3.0125,
+      "perplexity": 8.07
+    },
+    {
+      "name": "atome_no_sparse",
+      "seed": 0,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 71.1,
+      "final_loss": 2.1797,
+      "bpb": 3.0025,
+      "perplexity": 8.014
+    },
+    {
+      "name": "atome_no_sparse",
+      "seed": 1,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 71.4,
+      "final_loss": 2.1262,
+      "bpb": 2.9874,
+      "perplexity": 7.931
+    },
+    {
+      "name": "atome_no_sparse",
+      "seed": 2,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "train_seconds": 71.7,
+      "final_loss": 2.0342,
+      "bpb": 2.9733,
+      "perplexity": 7.853
+    },
+    {
+      "name": "vanilla_60k_fp32",
+      "seed": 0,
+      "kind": "vanilla_fp32",
+      "params": 60808,
+      "disk_bytes": 243232,
+      "train_seconds": 53.5,
+      "final_loss": 2.2656,
+      "bpb": 3.3015,
+      "perplexity": 9.86
+    },
+    {
+      "name": "vanilla_60k_fp32",
+      "seed": 1,
+      "kind": "vanilla_fp32",
+      "params": 60808,
+      "disk_bytes": 243232,
+      "train_seconds": 52.5,
+      "final_loss": 2.3242,
+      "bpb": 3.2836,
+      "perplexity": 9.738
+    },
+    {
+      "name": "vanilla_60k_fp32",
+      "seed": 2,
+      "kind": "vanilla_fp32",
+      "params": 60808,
+      "disk_bytes": 243232,
+      "train_seconds": 41.2,
+      "final_loss": 2.2881,
+      "bpb": 3.3029,
+      "perplexity": 9.869
+    },
+    {
+      "name": "vanilla_6k_fp32",
+      "seed": 0,
+      "kind": "vanilla_fp32",
+      "params": 5968,
+      "disk_bytes": 23872,
+      "train_seconds": 19.8,
+      "final_loss": 2.9111,
+      "bpb": 4.2244,
+      "perplexity": 18.693
+    },
+    {
+      "name": "vanilla_6k_fp32",
+      "seed": 1,
+      "kind": "vanilla_fp32",
+      "params": 5968,
+      "disk_bytes": 23872,
+      "train_seconds": 19.4,
+      "final_loss": 3.0204,
+      "bpb": 4.318,
+      "perplexity": 19.946
+    },
+    {
+      "name": "vanilla_6k_fp32",
+      "seed": 2,
+      "kind": "vanilla_fp32",
+      "params": 5968,
+      "disk_bytes": 23872,
+      "train_seconds": 25.4,
+      "final_loss": 2.8938,
+      "bpb": 4.1722,
+      "perplexity": 18.029
+    }
+  ],
+  "summary": {
+    "atome_60k_ternary": {
+      "n_runs": 3,
+      "kind": "atome_ternary",
+      "params": 60800,
+      "disk_bytes": 15456,
+      "disk_kb": 15.09,
+      "bpb_median": 2.9254,
+      "bpb_min": 2.9105,
+      "bpb_max": 3.0364,
+      "ppl_median": 7.597
+    },
+    "atome_60k_power3": {
+      "n_runs": 3,
+      "kind": "atome_power3",
+      "params": 60800,
+      "disk_bytes": 23056,
+      "disk_kb": 22.52,
+      "bpb_median": 2.8992,
+      "bpb_min": 2.84,
+      "bpb_max": 2.9219,
+      "ppl_median": 7.46
+    },
+    "atome_no_local": {
+      "n_runs": 3,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "disk_kb": 15.03,
+      "bpb_median": 3.1874,
+      "bpb_min": 3.1171,
+      "bpb_max": 3.1983,
+      "ppl_median": 9.11
+    },
+    "atome_no_state": {
+      "n_runs": 3,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "disk_kb": 15.03,
+      "bpb_median": 3.0125,
+      "bpb_min": 2.9728,
+      "bpb_max": 3.0409,
+      "ppl_median": 8.07
+    },
+    "atome_no_sparse": {
+      "n_runs": 3,
+      "kind": "atome_ternary",
+      "params": 60544,
+      "disk_bytes": 15392,
+      "disk_kb": 15.03,
+      "bpb_median": 2.9874,
+      "bpb_min": 2.9733,
+      "bpb_max": 3.0025,
+      "ppl_median": 7.93
+    },
+    "vanilla_60k_fp32": {
+      "n_runs": 3,
+      "kind": "vanilla_fp32",
+      "params": 60808,
+      "disk_bytes": 243232,
+      "disk_kb": 237.53,
+      "bpb_median": 3.3015,
+      "bpb_min": 3.2836,
+      "bpb_max": 3.3029,
+      "ppl_median": 9.859
+    },
+    "vanilla_6k_fp32": {
+      "n_runs": 3,
+      "kind": "vanilla_fp32",
+      "params": 5968,
+      "disk_bytes": 23872,
+      "disk_kb": 23.31,
+      "bpb_median": 4.2244,
+      "bpb_min": 4.1722,
+      "bpb_max": 4.318,
+      "ppl_median": 18.693
+    }
+  }
+}
