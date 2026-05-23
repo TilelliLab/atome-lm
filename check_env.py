@@ -49,7 +49,7 @@ def main() -> None:
         assert torch.isfinite(loss), "loss is not finite"
     except Exception as e:  # noqa: BLE001 — surface any failure to the user
         _fail(f"forward pass failed: {e}")
-    print(f"  OK    forward pass — {n_params:,} params, loss {float(loss):.3f}")
+    print(f"  OK    forward pass — {n_params:,} params, loss {loss.detach().item():.3f}")
 
     print("-" * 44)
     print("All checks passed. See QUICKSTART.md to train and export a model.")

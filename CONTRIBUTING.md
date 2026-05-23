@@ -5,8 +5,8 @@ Thanks for considering a contribution. This is a small, focused project — a ti
 ## Quick start
 
 ```bash
-git clone https://github.com/atome-lm/atome-llm-kit
-cd atome-llm-kit
+git clone https://github.com/TilelliLab/atome-lm
+cd atome-lm
 ./install.sh
 . .venv/bin/activate
 pytest -q        # expect: 146 passed (or 145 + 1 skipped without qemu-system-arm)

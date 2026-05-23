@@ -10,7 +10,7 @@ Read this first. ~5 minute orientation for anyone (human or agent) coming to the
 
 - License: Apache 2.0
 - Tests: `pytest -q` → expect **146 passed, 0 skipped** (1 skip if `qemu-system-arm` is missing)
-- No trained weights ship in this repo. Train your own with `scripts/train_demo.py` (~30 min CPU).
+- Three trained checkpoints ship in `checkpoints/`: `atome_944k.bin` (the 60K-active demo blob), `atome_1m_v1.pt` (its PyTorch source), and `vanilla_1m_v1.pt` (the FP32 baseline used for the HONEST_RESULTS A/B). Anything *else* matching `*.pt`/`*.atome*`/`*.bin` is gitignored. To train from scratch instead, use `scripts/train_demo.py` (~30 min CPU).
 
 ## Why this exists
 
@@ -25,7 +25,7 @@ These are load-bearing invariants. Verify any change against them before reporti
 3. **`weights_only=True` on every `torch.load`.** All kit checkpoints are `{"config": dict, "state_dict": dict}` — pure tensors + primitives. Loading with `weights_only=False` is RCE on a malicious .pt file. Don't regress this.
 4. **No hardcoded model constants in the exporter.** `scripts/export_to_atome.py` reads `top_k` (and all other config) from the checkpoint and writes the real value into the C header. Don't hardcode constants — there's a regression test in `tests/test_export_format.py` that will catch it.
 5. **Bounds checks in `atome_predict_next` and `atome_generate`.** Both reject `n_tokens < 1`, `prompt_len < 1`, and NULL pointers before any indexing/memcpy. Don't remove these — `state->x[n_tokens - 1]` is UB without them.
-6. **No trained weights in this repo.** Anything matching `*.pt`, `*.atome*`, `*.bin` is gitignored. The 944K-parameter "moat" weights live elsewhere and stay out of the public release.
+6. **Only the three released checkpoints ship.** `checkpoints/atome_944k.bin`, `checkpoints/atome_1m_v1.pt`, and `checkpoints/vanilla_1m_v1.pt` are tracked and allowlisted in `.gitignore`. Any *new* `*.pt`/`*.atome*`/`*.bin` artifact is gitignored by default — don't add more checkpoints to the public release without an explicit allowlist entry and a reason.
 7. **Honesty in benchmarks.** `HONEST_RESULTS.md` documents *both* wins (~22% better perplexity than vanilla FP32 at 60K params, 52% better at same flash budget) *and* losses (vanilla wins by ~11% at 944K scale). Don't quietly drop the losses to make headlines sound better.
 
 ## File map

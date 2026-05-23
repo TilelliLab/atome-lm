@@ -37,7 +37,7 @@ TEXT = (
 
 
 def load_model():
-    ckpt = torch.load(CKPT, map_location="cpu", weights_only=False)
+    ckpt = torch.load(CKPT, map_location="cpu", weights_only=True)
     cfg = ckpt["config"]
     m = AtomeLM(vocab_size=cfg.get("vocab_size", 256), d_model=cfg["d_model"],
                 n_layers=cfg["n_layers"], d_head=cfg["d_head"], top_k=cfg["top_k"],

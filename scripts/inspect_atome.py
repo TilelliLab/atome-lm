@@ -193,7 +193,7 @@ def main() -> None:
 
     if args.from_checkpoint is not None:
         import torch  # local import keeps inspector usable without torch otherwise
-        state = torch.load(args.from_checkpoint, map_location="cpu")
+        state = torch.load(args.from_checkpoint, map_location="cpu", weights_only=True)
         cfg = state["config"]
         args.d_model = cfg["d_model"]
         args.n_layers = cfg["n_layers"]
