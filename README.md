@@ -71,7 +71,7 @@ Datacenter LLMs assume datacenter RAM. A $2 microcontroller stuck on a wall in a
 - **Ternary weights** (`{-α, 0, +α}` per tensor, BitNet b1.58 style). No float multiplies in the matmul at inference.
 - **3-pathway block** (local depthwise conv, diagonal SSM, top-k sparse attention) mixed by a per-token soft router. Designed to match the Atome C99 engine struct exactly so trained checkpoints export to flash and run with **bit-exact parity** between Python and C.
 - **Byte tokenizer.** No BPE table to ship.
-- **Router entropy as a calibration signal.** The per-token router distribution's entropy is observable for free at every position. In our larger V2 production model (3 M parameters, mixed-domain training) entropy is observed to track out-of-domain inputs and to correlate with per-token loss. At Atome-LLM's engine-default 60 K-parameter scale on a single narrow corpus the signal is exposed identically — but its calibration as an uncertainty estimator at that scale has not been measured here.
+- **Router entropy as a calibration signal.** The per-token router distribution's entropy is observable for free at every position. At Atome-LLM's engine-default 60 K-parameter scale on a single narrow corpus the signal is exposed but its calibration as an uncertainty estimator at that scale has not been measured here. We have *preliminarily* observed (in a larger 3 M-parameter model **not part of this release**) that entropy tracks out-of-domain inputs and correlates with per-token loss — reported here as a not-yet-public observation, with measurements to follow in a future release.
 
 ## What this is and isn't
 
