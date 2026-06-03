@@ -30,7 +30,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            build-essential gcc-arm-none-eabi qemu-system-arm
+            build-essential gcc-arm-none-eabi libnewlib-arm-none-eabi qemu-system-arm
 
       - name: Install CPU-only PyTorch
         run: |
