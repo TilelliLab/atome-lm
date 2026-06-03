@@ -27,8 +27,25 @@ def _have_tool(name: str) -> bool:
     return shutil.which(name) is not None
 
 
-@pytest.mark.skipif(not _have_tool("arm-none-eabi-gcc"),
-                    reason="arm-none-eabi-gcc not installed")
+def _arm_can_build() -> bool:
+    """True only if arm-none-eabi-gcc can actually find its C library headers.
+    The gcc-arm-none-eabi package ships the compiler but not newlib; without
+    libnewlib-arm-none-eabi a simple `#include <stdio.h>` fails to compile, so
+    checking for the binary alone is not enough — verify a real build works."""
+    if not _have_tool("arm-none-eabi-gcc"):
+        return False
+    try:
+        r = subprocess.run(
+            ["arm-none-eabi-gcc", "-fsyntax-only", "-x", "c", "-"],
+            input=b"#include <stdio.h>\n",
+            capture_output=True, timeout=30)
+        return r.returncode == 0
+    except Exception:
+        return False
+
+
+@pytest.mark.skipif(not _arm_can_build(),
+                    reason="arm-none-eabi-gcc + newlib (libnewlib-arm-none-eabi) not available")
 @pytest.mark.skipif(not _have_tool("qemu-system-arm"),
                     reason="qemu-system-arm not installed")
 @pytest.mark.skipif(not _have_tool("xxd"), reason="xxd not installed")
