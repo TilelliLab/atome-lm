@@ -1,0 +1,23 @@
+# Base defaults (no PSRAM here — see sdkconfig.psram overlay for the 944K/full build).
+# atome.sh layers an overlay per profile via SDKCONFIG_DEFAULTS.
+
+# --- partition table (2MB app, see partitions.csv) ---
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+
+# --- flash (4MB; fits all our boards). 80MHz ~doubles weight-read speed. ---
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_ESPTOOLPY_FLASHMODE_DIO=y
+CONFIG_ESPTOOLPY_FLASHFREQ_80M=y
+
+# --- max clock: model is flash/compute-bound, so run the core flat out ---
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ=240
+
+# --- performance ---
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+
+# --- console on the default USB-serial/UART ---
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+CONFIG_ESP_CONSOLE_UART_BAUDRATE=115200

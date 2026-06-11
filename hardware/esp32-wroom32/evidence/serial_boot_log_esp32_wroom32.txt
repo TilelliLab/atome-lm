@@ -1,0 +1,59 @@
+Atome 944K LM — on-silicon proof-of-execution
+Board : ESP32-WROOM-32 (ESP32-D0WD-V3 rev v3.1), 4 MB flash, NO PSRAM
+Host  : Ubuntu, /dev/ttyUSB0 @ 115200 baud
+Build : wroom profile (944K weights, d=256/L=8, seq=24, state in internal SRAM)
+        CPU 240 MHz, SPI flash 80 MHz, task watchdog disabled
+Engine: c_engine/upstream/atome.c from TilelliLab/atome-lm (Apache-2.0) — the
+        repo's own engine (SSM-reset / multi-token parity fix). Byte-identical.
+Ckpt  : checkpoints/atome_944k.bin (md5 b588e45f41d82b4c737c80808a25140b)
+App SHA256 (atome_esp32.bin, 447648 bytes):
+        de747caedc36b0d5c531f3b564c422b1840cca1db6adb81cfd9f6599631957bc
+Date  : 2026-06-11
+
+--- boot banner (deterministic from build config) ---
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+mode:DIO, clock div:1
+I boot.esp32: SPI Speed      : 80MHz
+I boot.esp32: SPI Flash Size : 4MB
+I cpu_start: cpu freq: 240000000 Hz
+
+==================== ATOME on SILICON ====================
+chip      : ESP32  rev v3.1  cores=2
+flash     : 4 MB
+PSRAM     : 0 KB (NONE)
+free heap : 369 KB internal (largest block 168 KB)
+model     : 276655 bytes embedded in flash
+config    : d=256 layers=8 head=64 seq=24  state=159 KB
+==========================================================
+[state] 159 KB in internal SRAM
+
+--- benchmark (greedy, offline) — repo engine, on real silicon ---
+
+prompt: Once
+>>>  upon a time, there
+  20 tok in 19062.7 ms  =  1.0 tok/s  (953.13 ms/tok)
+
+prompt: The dog
+>>>  was so excited.
+  17 tok in 17964.0 ms  =  0.9 tok/s  (1056.71 ms/tok)
+
+prompt: A girl
+>>>  was so happy to h
+  18 tok in 18399.0 ms  =  1.0 tok/s  (1022.17 ms/tok)
+
+average: 1.0 tok/s   |   heap low-water: 209 KB internal
+
+--- REPL: type a prompt, press Enter ---
+atome>
+
+----------------------------------------------------------------------
+HONEST SCOPE
+- Proof-of-execution + reproducibility artifact: the Atome ternary engine (the
+  repo's own c_engine, which passes the host unit tests and QEMU Cortex-M3 parity)
+  running on PHYSICAL silicon, generating coherent text fully offline.
+- NOT a benchmark win or moat. ~1 tok/s on a sub-1M LM on an MCU is known territory
+  (cf. llama2.c-on-MCU, TinyML). No same-chip head-to-head vs an alternative has
+  been run — that is future work, not a claim here.
+- Flash-bound: ~270 KB of ternary weights read from SPI flash per token. 80 MHz
+  flash + 240 MHz core give ~1 tok/s; a PSRAM board (WROVER / ESP32-S3-R8) running
+  the full seq=128 profile is the next data point.
