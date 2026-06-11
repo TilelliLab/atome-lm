@@ -1,0 +1,9 @@
+# build artifacts
+firmware/build/
+# active embedded blob (atome.sh copies the chosen checkpoint here)
+firmware/main/model.atome
+# generated sdkconfig (defaults + overlays are tracked; the resolved file is not)
+firmware/sdkconfig
+firmware/sdkconfig.old
+# local detect cache
+.atome_state

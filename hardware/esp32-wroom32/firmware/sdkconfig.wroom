@@ -1,0 +1,10 @@
+# Overlay for the WROOM build — 944K model at seq=32 in internal SRAM, NO PSRAM.
+# We run fully offline, so disable the radios to free ~50KB+ of internal DRAM
+# for the ~209KB inference state.
+CONFIG_ESP_WIFI_ENABLED=n
+CONFIG_BT_ENABLED=n
+# Keep the main task stack lean; the big state is heap-allocated, not on stack.
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=6144
+# Generation hogs CPU0 for seconds at a time (single compute task), which would
+# starve the idle task and trip the task watchdog. We don't need it here.
+CONFIG_ESP_TASK_WDT_INIT=n

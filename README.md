@@ -33,10 +33,13 @@ weights — all in this repository, released under the
 checkpoint immediately.
 
 **MCU status:** QEMU ARM (Cortex-M3, MPS2-AN385) parity passes to FP32
-epsilon. **Silicon bring-up is not done in this repository.** For real
-device deployment we sell integration — silicon bring-up, the Atome Secure
-Boot Pack (signed `.atome` blobs, dev/prod flags, per-platform secure-boot,
-attestation), per-platform hardening — at [atomelm.com](https://atomelm.com).
+epsilon, and a reproducible **real-silicon demo** runs the 944 K checkpoint on a
+physical **ESP32-WROOM-32** — coherent text, fully offline, ~1 tok/s — see
+[`hardware/esp32-wroom32/`](hardware/esp32-wroom32/) (prebuilt binary + serial
+log + one-command flash). That demo is a bare proof-of-execution; **productized
+bring-up** — the Atome Secure Boot Pack (signed `.atome` blobs, dev/prod flags,
+per-platform secure-boot, attestation), per-platform hardening — we sell as
+integration at [atomelm.com](https://atomelm.com).
 
 **Weights are included** in `checkpoints/`:
 
