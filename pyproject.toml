@@ -30,7 +30,10 @@ Homepage = "https://atomelm.com"
 Demo = "https://atomelm.com/demo.html"
 
 [project.optional-dependencies]
-dev = ["pytest>=7"]
+dev = ["pytest>=7", "cryptography>=41", "scipy>=1.10"]
+# SuperESP (v2) runtime extras: Ed25519 attestation + audio/voice feature extraction
+# (+ pyserial for on-device log capture). Install with: pip install -e ".[superesp]"
+superesp = ["cryptography>=41", "scipy>=1.10", "pyserial>=3.5"]
 
 [tool.setuptools.packages.find]
 include = ["atome_llm*"]
