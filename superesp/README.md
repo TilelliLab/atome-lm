@@ -58,8 +58,8 @@ abstention AURC, delta-inference speedup, and the REAL/SYNTH label per head.
 
 ## Install
 ```
-pip install -e .            # exposes the `superesp` command (or: python3 -m superesp.cli)
-pip install -e .[esp32]     # + esptool/pyserial to flash a real board
+pip install -e .              # core (torch + numpy); run the CLI as: python3 -m superesp.cli <cmd>
+pip install -e ".[superesp]"  # + cryptography/scipy/pyserial/esptool (attestation, audio, flashing)
 ```
 
 ## Flash any ESP32 (no ESP-IDF needed — prebuilt for esp32/s2/s3/c3/c6/h2)
@@ -71,17 +71,17 @@ bash superesp/esp32/install.sh    # auto-detects the chip, flashes the matching
 ## Make your OWN classifier in minutes (no ML skill — the log→train→flash loop)
 ```
 # 1. flash the data-logger, then record YOUR sensor in each state:
-superesp log --label dry   --out field.csv      # leave probe in dry soil
-superesp log --label wet   --out field.csv      # ...then wet soil
+python3 -m superesp.cli log --label dry --out field.csv   # leave probe in dry soil
+python3 -m superesp.cli log --label wet --out field.csv   # ...then wet soil
 # 2. train + see how good it is + deploy:
-superesp train  --csv field.csv --name myfarm
-superesp report myfarm                          # confusion matrix + abstention (md + html)
-superesp flashplan myfarm
-# (or start from a blank template:)  superesp new myfarm --features 30
+python3 -m superesp.cli train --csv field.csv --name myfarm
+python3 -m superesp.cli report myfarm                     # confusion matrix + abstention (md + html)
+python3 -m superesp.cli flashplan myfarm
+# (or start from a blank template:)  python3 -m superesp.cli new myfarm --features 30
 ```
 **The 9 SYNTH heads are just defaults — fully swappable.** Train under a built-in
 name with your own data to replace it with a real-world model:
-`superesp train --csv my_field.csv --name agri` overwrites the synthetic `agri`
+`python3 -m superesp.cli train --csv my_field.csv --name agri` overwrites the synthetic `agri`
 head's blob. Nothing is hard-coded; every head is "train on data → export blob".
 
 ## Reproduce / bring your own data
@@ -93,7 +93,7 @@ python3 -m superesp.cli train --csv my.csv --label-col state --name mysensor
 python3 -m superesp.cli flashplan mysensor        # how to bake the blob into firmware
 # or everything at once:
 python3 -m superesp.train_all && python3 -m superesp.attest_all
-python3 -m pytest superesp/tests                  # 20 tests: framework, parity(gcc), attest, dispatch, streaming, csv, novelty
+python3 -m pytest superesp/tests                  # framework, parity(gcc), attest, dispatch, streaming, csv, novelty
 ```
 Anyone with a CSV of their own ESP32 sensor windows gets a bit-exact, attestable
 on-device classifier — no ML setup. This is the open/auditable analogue of a

@@ -5,8 +5,17 @@ type: software
 authors:
   - name: "Atome LM contributors"
 url: "https://atomelm.com"
-version: "0.3.0"
-date-released: 2026-05-21
+repository-code: "https://github.com/TilelliLab/atome-lm"
+version: "v2.0"
+date-released: 2026-06-29
+doi: 10.5281/zenodo.20518644
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20518644
+    description: "Concept DOI (always resolves to the latest version)"
+  - type: doi
+    value: 10.5281/zenodo.21027125
+    description: "Version DOI for v2.0 (SuperESP)"
 license: Apache-2.0
 keywords:
   - "language model"
