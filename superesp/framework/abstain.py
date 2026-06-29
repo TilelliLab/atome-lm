@@ -16,6 +16,9 @@ import numpy as np
 import torch
 from torch import Tensor
 
+# numpy>=2.0 renamed np.trapz -> np.trapezoid; support both.
+_trapz = getattr(np, "trapezoid", getattr(np, "trapz", None))
+
 
 def margins(probs: Tensor) -> Tensor:
     """top1 - top2 softmax probability, per sample. (N,)."""
@@ -45,12 +48,12 @@ def risk_coverage(probs: Tensor, labels: Tensor) -> dict:
     k = np.arange(1, n + 1)
     coverage = k / n
     risk = 1.0 - cum_correct / k
-    aurc = float(np.trapz(risk, coverage))  # area under risk-coverage curve
+    aurc = float(_trapz(risk, coverage))  # area under risk-coverage curve
 
     # Oracle: rank all correct first -> minimal achievable AURC for this acc.
     oc = np.sort(correct)[::-1]
     oracle_risk = 1.0 - np.cumsum(oc) / k
-    oracle_aurc = float(np.trapz(oracle_risk, coverage))
+    oracle_aurc = float(_trapz(oracle_risk, coverage))
     base_acc = float(correct.mean())
     return {
         "aurc": aurc,
