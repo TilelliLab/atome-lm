@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atome-llm"
-version = "0.3.0"
+version = "2.0.0"
 description = "Atome LM — a tiny ternary language model designed for microcontroller deployment via the Atome C99 inference engine."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -29,6 +29,9 @@ dependencies = [
 Homepage = "https://atomelm.com"
 Demo = "https://atomelm.com/demo.html"
 
+[project.scripts]
+superesp = "superesp.cli:main"
+
 [project.optional-dependencies]
 dev = ["pytest>=7", "cryptography>=41", "scipy>=1.10"]
 # SuperESP (v2) runtime extras: Ed25519 attestation + audio/voice feature extraction
@@ -36,4 +39,9 @@ dev = ["pytest>=7", "cryptography>=41", "scipy>=1.10"]
 superesp = ["cryptography>=41", "scipy>=1.10", "pyserial>=3.5", "esptool>=4.7"]
 
 [tool.setuptools.packages.find]
-include = ["atome_llm*"]
+include = ["atome_llm*", "superesp*"]
+
+# Ship the read-only data a fresh install needs (signed head blobs, zoo registry,
+# prebuilt firmware). Training/firmware-build still expect a source checkout.
+[tool.setuptools.package-data]
+"superesp" = ["artifacts/*", "artifacts/reports/*", "esp32/prebuilt/**", "zoo/*.json", "zoo/*.html"]

@@ -1,9 +1,12 @@
 """superesp.cli — one-command reproduction of SuperESP applications.
 
-    python3 -m superesp.cli list
-    python3 -m superesp.cli train  <head>          # a built-in head
-    python3 -m superesp.cli train  --csv my.csv --label-col state --name mysensor
-    python3 -m superesp.cli flashplan <name>        # how to bake the blob into firmware
+After `pip install -e .` the `superesp` command is available (or use
+`python3 -m superesp.cli` without installing):
+
+    superesp list
+    superesp train  <head>          # a built-in head
+    superesp train  --csv my.csv --label-col state --name mysensor
+    superesp flashplan <name>        # how to bake the blob into firmware
 
 `train` does the whole pipeline: split (leak-free) -> train tiny ternary head ->
 held-out eval + abstention + novelty -> export ATOMECL01 -> Ed25519 attestation,
@@ -33,7 +36,7 @@ def _load(args):
         return load_csv(args.csv, label_col=args.label_col, name=args.name)
     from superesp.heads import BY_NAME
     if args.head not in BY_NAME:
-        raise SystemExit(f"unknown head {args.head!r}; see `cli list`")
+        raise SystemExit(f"unknown head {args.head!r}; see `superesp list`")
     return BY_NAME[args.head].loader(seed=0)
 
 
@@ -42,7 +45,7 @@ def cmd_list(_):
     print("Built-in SuperESP heads:")
     for h in HEADS:
         print(f"  {h.name:11s} — {h.blurb}")
-    print("\nOr bring your own:  cli train --csv data.csv --label-col <col> --name <name>")
+    print("\nOr bring your own:  superesp train --csv data.csv --label-col <col> --name <name>")
 
 
 def cmd_train(args):
@@ -67,7 +70,7 @@ def cmd_train(args):
     sign.save_attestation(att, ART / f"{name}.att.json")
     ok, _ = sign.verify(blob, att)
     print(f"  exported {st['total_bytes']} B -> {blob.name}; attestation verify={'OK' if ok else 'FAIL'}")
-    print(f"  next: python3 -m superesp.cli flashplan {name}")
+    print(f"  next: superesp flashplan {name}")
 
 
 def cmd_targets(_):

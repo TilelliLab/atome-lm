@@ -16,20 +16,38 @@ import struct
 import sys
 from pathlib import Path
 
-_REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(_REPO))
+def _find_export_script() -> Path | None:
+    """Locate scripts/export_to_atome.py by walking up from this file.
 
-# Load scripts/export_to_atome.py as a module to reuse its writers.
-_spec = importlib.util.spec_from_file_location(
-    "_atome_export", _REPO / "scripts" / "export_to_atome.py"
-)
-_exp = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_exp)
+    Works from a source checkout or an editable install (files stay in place).
+    A non-editable wheel install has no scripts/ dir; in that case exporting a
+    new blob needs a source checkout, so we defer a clear error to call time
+    rather than crashing at import (read-only commands stay usable).
+    """
+    for base in Path(__file__).resolve().parents:
+        cand = base / "scripts" / "export_to_atome.py"
+        if cand.exists():
+            sys.path.insert(0, str(base))
+            return cand
+    return None
 
-write_ternary = _exp.write_ternary
-write_conv = _exp.write_conv
-write_norm = _exp.write_norm
-write_ssm = _exp.write_ssm
+_SCRIPT = _find_export_script()
+if _SCRIPT is not None:
+    _spec = importlib.util.spec_from_file_location("_atome_export", _SCRIPT)
+    _exp = importlib.util.module_from_spec(_spec)
+    _spec.loader.exec_module(_exp)
+    write_ternary = _exp.write_ternary
+    write_conv = _exp.write_conv
+    write_norm = _exp.write_norm
+    write_ssm = _exp.write_ssm
+else:
+    def _need_checkout(*_a, **_k):
+        raise RuntimeError(
+            "Exporting a blob needs the Atome source tree (scripts/export_to_atome.py).\n"
+            "Install from a checkout:  git clone …/atome-lm && pip install -e .\n"
+            "(A plain wheel install can run read-only commands but not train/export.)"
+        )
+    write_ternary = write_conv = write_norm = write_ssm = _need_checkout
 
 MAGIC = b"ATOMECL01"
 
