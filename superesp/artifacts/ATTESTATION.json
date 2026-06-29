@@ -1,0 +1,74 @@
+[
+  {
+    "head": "agri",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "voice",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "motion",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "sound_scene",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "anomaly",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "air",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "os_telem",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "power",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "occupancy",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "wearable",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "water",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  },
+  {
+    "head": "forecast",
+    "signed": true,
+    "verify_ok": true,
+    "reason": "ok"
+  }
+]

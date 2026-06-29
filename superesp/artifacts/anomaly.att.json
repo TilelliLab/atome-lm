@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "anomaly",
+    "n_classes": 4,
+    "classes": [
+      "normal",
+      "imbalance",
+      "bearing_fault",
+      "looseness"
+    ],
+    "sha256": "0f079875a93ee876bc516afdd01e778e092fda4123c9379d1560caaebe690825",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.980666+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "316efb18f6e7f7be30eff9ce0fdd7f4db678d50925f433835654906c8f48d63da27b4e2eeae625e982df40cfdd8731a50c67c04a820fedc890442ff2c7a5fc0f"
+}

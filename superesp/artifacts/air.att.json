@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "air",
+    "n_classes": 4,
+    "classes": [
+      "clean",
+      "co2_high",
+      "gas_leak",
+      "smoke"
+    ],
+    "sha256": "88df23a50ba82f7bb9beb314dfea94cce216bcbf4c81e41c1e7579f62f0caf72",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.981415+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "6330833acce959d65edd5d3ef8656abcbe5a77ff123bf312a9adcfb60897b3576ce2e91068887f3a0b995b009598e179a7b7b40395950926a0cefed8af905200"
+}

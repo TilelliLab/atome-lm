@@ -1,0 +1,19 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "os_telem",
+    "n_classes": 5,
+    "classes": [
+      "normal",
+      "low_memory",
+      "overheating",
+      "wifi_degraded",
+      "power_fault"
+    ],
+    "sha256": "c8078dafca12b4708c3964ca49d57263a5543cf4767db3f0906af9373cbaaa5f",
+    "blob_bytes": 6633,
+    "created": "2026-06-28T01:04:38.982039+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "2fc5e6b282fbac09367266207aec0260bbd154b22889add8ff2bec7356b2201100ded593aecb9d762c8e142743944d8006a15b18f87e32a4927c59be5765c10e"
+}

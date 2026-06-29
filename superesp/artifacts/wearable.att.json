@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "wearable",
+    "n_classes": 4,
+    "classes": [
+      "rest",
+      "active",
+      "exercise",
+      "irregular"
+    ],
+    "sha256": "f029931133c2cf46f1e6c4054d0d34a767ffa7465e743eb2cb6a51916d506808",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.984028+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "951371cb56fe155ba1a26268c3cd1f7af837914093676d2580402a40f550646bfb8f3eb5f33908a4bcec85502de31929577e0a45fb32f4e08ef42abae7533e0d"
+}

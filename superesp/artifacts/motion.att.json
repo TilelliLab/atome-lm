@@ -1,0 +1,20 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "motion",
+    "n_classes": 6,
+    "classes": [
+      "walking",
+      "upstairs",
+      "downstairs",
+      "sitting",
+      "standing",
+      "laying"
+    ],
+    "sha256": "423e9d2f732f57db66561b8cce42c4e9d53d3060262771558e15b796a09b87c3",
+    "blob_bytes": 6641,
+    "created": "2026-06-28T01:04:38.979084+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "e81d3474ae996f1fce0a26fce9899423986c132f9439f79eff5ca5334e308b7ce7bfcc99dc664a72e6d58b39f7365739c3521121e95b3db3425c892a152d0004"
+}

@@ -1,0 +1,19 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "agri",
+    "n_classes": 5,
+    "classes": [
+      "healthy",
+      "needs_irrigate",
+      "frost_risk",
+      "pest_favorable",
+      "sensor_fault"
+    ],
+    "sha256": "169b85540a827b65dc84b38639c8d0d127b3e22d5a57cc760d5da5b0da749ad2",
+    "blob_bytes": 6633,
+    "created": "2026-06-28T01:04:38.976422+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "0b630afcb421f0c60c9b06287c58c623edf948c0434a75e9a77d014e284f023b871ffcfceed62d4cb1ca46085f893073a3395be255de1ed9696199ec0f54cb08"
+}

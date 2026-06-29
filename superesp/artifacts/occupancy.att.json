@@ -1,0 +1,17 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "occupancy",
+    "n_classes": 3,
+    "classes": [
+      "empty",
+      "occupied",
+      "crowded"
+    ],
+    "sha256": "52a1385256afbed9a881472d63d1b133d9337b3913e2ddf96f90043a6965043f",
+    "blob_bytes": 6617,
+    "created": "2026-06-28T01:04:38.983386+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "466c7997d21159f4a0ff0025bc72216e3850e61d2a7bdd5eac5201cd6353a78d781b566546e2e76ff50cb9a82b2c4dab098e013a44b11b72696d948830f15c0d"
+}

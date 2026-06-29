@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "forecast",
+    "n_classes": 4,
+    "classes": [
+      "safe",
+      "later",
+      "soon",
+      "imminent"
+    ],
+    "sha256": "dab0db78dd5bb89a7259daf06adf66e8f19c397bc9e09e510a95c02ff420e194",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.985417+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "60d719eaebbfd00223a880ae2be91534be14dd9d44dd16c8cd4ad661bbd9133643e9c4979657b657ac1f38602514febfc9044e6da953dce51e6d7142cd318d03"
+}

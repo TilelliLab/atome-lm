@@ -45,3 +45,12 @@ dist/*.zip
 .venv/
 venv/
 
+
+# SuperESP (v2) — never publish data, secrets, or build trees
+superesp/.data/
+superesp/nocopypaste/
+superesp/**/build/
+superesp/**/build_*/
+superesp/**/__pycache__/
+superesp/**/sdkconfig
+superesp/**/compile_commands.json

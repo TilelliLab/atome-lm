@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "voice",
+    "n_classes": 4,
+    "classes": [
+      "on",
+      "off",
+      "stop",
+      "go"
+    ],
+    "sha256": "11fdbc3533efb250c44626aef9e4a341c4a41778a3cf025b6f30e89f17e71fe8",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.978212+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "618470db0342e28df3e5f6b4fd6fd54dc0c511dfe69d7f0be4d3278c223717879009b0488c80c355eb7e4b73c9870d6598bf683e3d76f14e0f56866bd4ae8e03"
+}

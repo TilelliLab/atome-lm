@@ -1,0 +1,261 @@
+{
+  "registry": "superesp-local",
+  "version": 1,
+  "heads": [
+    {
+      "name": "agri",
+      "sha256": "169b85540a827b65dc84b38639c8d0d127b3e22d5a57cc760d5da5b0da749ad2",
+      "blob_bytes": 6633,
+      "classes": [
+        "healthy",
+        "needs_irrigate",
+        "frost_risk",
+        "pest_favorable",
+        "sensor_fault"
+      ],
+      "n_classes": 5,
+      "source": "SYNTH",
+      "test_acc": 0.9756,
+      "intended_use": "agricultural soil/climate monitoring",
+      "files": {
+        "blob": "artifacts/agri.atomecl",
+        "tokenizer": "artifacts/agri.tok.json",
+        "attestation": "artifacts/agri.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "air",
+      "sha256": "88df23a50ba82f7bb9beb314dfea94cce216bcbf4c81e41c1e7579f62f0caf72",
+      "blob_bytes": 6625,
+      "classes": [
+        "clean",
+        "co2_high",
+        "gas_leak",
+        "smoke"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.978,
+      "intended_use": "air-quality / gas-leak safety",
+      "files": {
+        "blob": "artifacts/air.atomecl",
+        "tokenizer": "artifacts/air.tok.json",
+        "attestation": "artifacts/air.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "anomaly",
+      "sha256": "0f079875a93ee876bc516afdd01e778e092fda4123c9379d1560caaebe690825",
+      "blob_bytes": 6625,
+      "classes": [
+        "normal",
+        "imbalance",
+        "bearing_fault",
+        "looseness"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.9367,
+      "intended_use": "machine predictive maintenance",
+      "files": {
+        "blob": "artifacts/anomaly.atomecl",
+        "tokenizer": "artifacts/anomaly.tok.json",
+        "attestation": "artifacts/anomaly.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "forecast",
+      "sha256": "dab0db78dd5bb89a7259daf06adf66e8f19c397bc9e09e510a95c02ff420e194",
+      "blob_bytes": 6625,
+      "classes": [
+        "safe",
+        "later",
+        "soon",
+        "imminent"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.831,
+      "intended_use": "predictive time-to-failure",
+      "files": {
+        "blob": "artifacts/forecast.atomecl",
+        "tokenizer": "artifacts/forecast.tok.json",
+        "attestation": "artifacts/forecast.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "motion",
+      "sha256": "423e9d2f732f57db66561b8cce42c4e9d53d3060262771558e15b796a09b87c3",
+      "blob_bytes": 6641,
+      "classes": [
+        "walking",
+        "upstairs",
+        "downstairs",
+        "sitting",
+        "standing",
+        "laying"
+      ],
+      "n_classes": 6,
+      "source": "REAL",
+      "test_acc": 0.8109,
+      "intended_use": "activity/gesture/fall detection",
+      "files": {
+        "blob": "artifacts/motion.atomecl",
+        "tokenizer": "artifacts/motion.tok.json",
+        "attestation": "artifacts/motion.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "occupancy",
+      "sha256": "52a1385256afbed9a881472d63d1b133d9337b3913e2ddf96f90043a6965043f",
+      "blob_bytes": 6617,
+      "classes": [
+        "empty",
+        "occupied",
+        "crowded"
+      ],
+      "n_classes": 3,
+      "source": "SYNTH",
+      "test_acc": 0.9841,
+      "intended_use": "room occupancy (HVAC/lighting)",
+      "files": {
+        "blob": "artifacts/occupancy.atomecl",
+        "tokenizer": "artifacts/occupancy.tok.json",
+        "attestation": "artifacts/occupancy.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "os_telem",
+      "sha256": "c8078dafca12b4708c3964ca49d57263a5543cf4767db3f0906af9373cbaaa5f",
+      "blob_bytes": 6633,
+      "classes": [
+        "normal",
+        "low_memory",
+        "overheating",
+        "wifi_degraded",
+        "power_fault"
+      ],
+      "n_classes": 5,
+      "source": "SYNTH",
+      "test_acc": 0.9867,
+      "intended_use": "device health supervision",
+      "files": {
+        "blob": "artifacts/os_telem.atomecl",
+        "tokenizer": "artifacts/os_telem.tok.json",
+        "attestation": "artifacts/os_telem.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "power",
+      "sha256": "204c28309ae07c54122b07e09729794205e7be547ce905d5cc7a0262536bd171",
+      "blob_bytes": 6625,
+      "classes": [
+        "off",
+        "resistive",
+        "motor",
+        "electronic"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.9806,
+      "intended_use": "energy / NILM load monitoring",
+      "files": {
+        "blob": "artifacts/power.atomecl",
+        "tokenizer": "artifacts/power.tok.json",
+        "attestation": "artifacts/power.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "sound_scene",
+      "sha256": "dcdf7a486bae8b52a8b4d5a12d291a74de2d9f53ee5f5f4a8a8a44f49af1ed22",
+      "blob_bytes": 6625,
+      "classes": [
+        "quiet",
+        "alarm",
+        "glass_break",
+        "speech_like"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.975,
+      "intended_use": "ambient acoustic-event detection",
+      "files": {
+        "blob": "artifacts/sound_scene.atomecl",
+        "tokenizer": "artifacts/sound_scene.tok.json",
+        "attestation": "artifacts/sound_scene.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "voice",
+      "sha256": "11fdbc3533efb250c44626aef9e4a341c4a41778a3cf025b6f30e89f17e71fe8",
+      "blob_bytes": 6625,
+      "classes": [
+        "on",
+        "off",
+        "stop",
+        "go"
+      ],
+      "n_classes": 4,
+      "source": "REAL",
+      "test_acc": 0.625,
+      "intended_use": "on-device farm voice commands",
+      "files": {
+        "blob": "artifacts/voice.atomecl",
+        "tokenizer": "artifacts/voice.tok.json",
+        "attestation": "artifacts/voice.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "water",
+      "sha256": "d7b082ac361e5a2570aeb793f5ba19de825b88074fbd59a2622b0c94eef229e8",
+      "blob_bytes": 6625,
+      "classes": [
+        "no_flow",
+        "normal_use",
+        "leak",
+        "burst"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.9889,
+      "intended_use": "leak/flood safety",
+      "files": {
+        "blob": "artifacts/water.atomecl",
+        "tokenizer": "artifacts/water.tok.json",
+        "attestation": "artifacts/water.att.json"
+      },
+      "attested": true
+    },
+    {
+      "name": "wearable",
+      "sha256": "f029931133c2cf46f1e6c4054d0d34a767ffa7465e743eb2cb6a51916d506808",
+      "blob_bytes": 6625,
+      "classes": [
+        "rest",
+        "active",
+        "exercise",
+        "irregular"
+      ],
+      "n_classes": 4,
+      "source": "SYNTH",
+      "test_acc": 0.9833,
+      "intended_use": "fitness activity (NOT a medical device)",
+      "files": {
+        "blob": "artifacts/wearable.atomecl",
+        "tokenizer": "artifacts/wearable.tok.json",
+        "attestation": "artifacts/wearable.att.json"
+      },
+      "attested": true
+    }
+  ]
+}

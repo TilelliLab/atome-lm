@@ -1,0 +1,8 @@
+# SuperESP battery — ESP32-WROOM-32 profile (the board we tested first).
+# No PSRAM; tiny state (~27 KB) lives in internal SRAM with huge headroom.
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=8192
+CONFIG_ESP_TASK_WDT_INIT=n
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+# Larger factory app partition: battery_data.h bakes all 12 blobs (~80 KB rodata).
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y

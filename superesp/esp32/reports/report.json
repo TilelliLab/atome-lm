@@ -1,0 +1,108 @@
+{
+  "generated": "2026-06-27T17:49:41.108712+00:00",
+  "source": "real ESP32 silicon",
+  "on_silicon": true,
+  "n_apps": 12,
+  "n_pass": 12,
+  "on_device_done": true,
+  "suspected_crash": false,
+  "apps": [
+    {
+      "head": "agri",
+      "status": "PASS",
+      "device_class": 4,
+      "expect_class": 4,
+      "expect_label": "sensor_fault",
+      "heap_kb": 265
+    },
+    {
+      "head": "voice",
+      "status": "PASS",
+      "device_class": 2,
+      "expect_class": 2,
+      "expect_label": "stop",
+      "heap_kb": 265
+    },
+    {
+      "head": "motion",
+      "status": "PASS",
+      "device_class": 0,
+      "expect_class": 0,
+      "expect_label": "walking",
+      "heap_kb": 265
+    },
+    {
+      "head": "sound_scene",
+      "status": "PASS",
+      "device_class": 2,
+      "expect_class": 2,
+      "expect_label": "glass_break",
+      "heap_kb": 265
+    },
+    {
+      "head": "anomaly",
+      "status": "PASS",
+      "device_class": 0,
+      "expect_class": 0,
+      "expect_label": "normal",
+      "heap_kb": 265
+    },
+    {
+      "head": "air",
+      "status": "PASS",
+      "device_class": 3,
+      "expect_class": 3,
+      "expect_label": "smoke",
+      "heap_kb": 265
+    },
+    {
+      "head": "os_telem",
+      "status": "PASS",
+      "device_class": 4,
+      "expect_class": 4,
+      "expect_label": "power_fault",
+      "heap_kb": 265
+    },
+    {
+      "head": "power",
+      "status": "PASS",
+      "device_class": 3,
+      "expect_class": 3,
+      "expect_label": "electronic",
+      "heap_kb": 265
+    },
+    {
+      "head": "occupancy",
+      "status": "PASS",
+      "device_class": 2,
+      "expect_class": 2,
+      "expect_label": "crowded",
+      "heap_kb": 265
+    },
+    {
+      "head": "wearable",
+      "status": "PASS",
+      "device_class": 3,
+      "expect_class": 3,
+      "expect_label": "irregular",
+      "heap_kb": 265
+    },
+    {
+      "head": "water",
+      "status": "PASS",
+      "device_class": 3,
+      "expect_class": 3,
+      "expect_label": "burst",
+      "heap_kb": 265
+    },
+    {
+      "head": "forecast",
+      "status": "PASS",
+      "device_class": 3,
+      "expect_class": 3,
+      "expect_label": "imminent",
+      "heap_kb": 265
+    }
+  ],
+  "bugs": []
+}

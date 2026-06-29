@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "sound_scene",
+    "n_classes": 4,
+    "classes": [
+      "quiet",
+      "alarm",
+      "glass_break",
+      "speech_like"
+    ],
+    "sha256": "dcdf7a486bae8b52a8b4d5a12d291a74de2d9f53ee5f5f4a8a8a44f49af1ed22",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.979885+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "f98d1a9adf14a97e64542a15f6be1066d0d617a84a90015dc0d59d788f0c5c24abfdbd77de78be4faeb244805d0d986432c3a203366bf20020b7b39f8acbac08"
+}

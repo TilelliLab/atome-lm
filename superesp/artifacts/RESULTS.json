@@ -1,0 +1,416 @@
+[
+  {
+    "head": "agri",
+    "title": "SuperESP-Agri",
+    "source": "SYNTH",
+    "classes": [
+      "healthy",
+      "needs_irrigate",
+      "frost_risk",
+      "pest_favorable",
+      "sensor_fault"
+    ],
+    "n_classes": 5,
+    "n_features": 30,
+    "params": 20512,
+    "test_acc": 0.9756,
+    "n_test": 450,
+    "abstain_aurc": 0.0015,
+    "oracle_aurc": 0.0003,
+    "random_aurc": 0.0244,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6633,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 7.08,
+        "max_err": 0.0046
+      },
+      "thr_0.05": {
+        "speedup": 8.41,
+        "max_err": 0.0179
+      },
+      "thr_0.1": {
+        "speedup": 10.92,
+        "max_err": 0.0376
+      }
+    },
+    "train_s": 42.4
+  },
+  {
+    "head": "voice",
+    "title": "SuperESP-Voice",
+    "source": "REAL",
+    "classes": [
+      "on",
+      "off",
+      "stop",
+      "go"
+    ],
+    "n_classes": 4,
+    "n_features": 32,
+    "params": 20480,
+    "test_acc": 0.625,
+    "n_test": 120,
+    "abstain_aurc": 0.7297,
+    "oracle_aurc": 0.37,
+    "random_aurc": 0.725,
+    "coverage_at_5pct_risk": 0.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": false,
+      "reason": "tabular head, no temporal stream"
+    },
+    "train_s": 11.5
+  },
+  {
+    "head": "motion",
+    "title": "SuperESP-Motion",
+    "source": "REAL",
+    "classes": [
+      "walking",
+      "upstairs",
+      "downstairs",
+      "sitting",
+      "standing",
+      "laying"
+    ],
+    "n_classes": 6,
+    "n_features": 30,
+    "params": 20544,
+    "test_acc": 0.8109,
+    "n_test": 1544,
+    "abstain_aurc": 0.0644,
+    "oracle_aurc": 0.0191,
+    "random_aurc": 0.1891,
+    "coverage_at_5pct_risk": 0.532,
+    "blob_bytes": 6641,
+    "delta": {
+      "applicable": false,
+      "reason": "tabular head, no temporal stream"
+    },
+    "train_s": 142.1
+  },
+  {
+    "head": "sound_scene",
+    "title": "SuperESP-Sound-Scene",
+    "source": "SYNTH",
+    "classes": [
+      "quiet",
+      "alarm",
+      "glass_break",
+      "speech_like"
+    ],
+    "n_classes": 4,
+    "n_features": 32,
+    "params": 20480,
+    "test_acc": 0.975,
+    "n_test": 240,
+    "abstain_aurc": 0.0064,
+    "oracle_aurc": 0.0003,
+    "random_aurc": 0.025,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": false,
+      "reason": "tabular head, no temporal stream"
+    },
+    "train_s": 33.1
+  },
+  {
+    "head": "anomaly",
+    "title": "SuperESP-Anomaly",
+    "source": "SYNTH",
+    "classes": [
+      "normal",
+      "imbalance",
+      "bearing_fault",
+      "looseness"
+    ],
+    "n_classes": 4,
+    "n_features": 32,
+    "params": 20480,
+    "test_acc": 0.9367,
+    "n_test": 300,
+    "abstain_aurc": 0.029,
+    "oracle_aurc": 0.002,
+    "random_aurc": 0.0633,
+    "coverage_at_5pct_risk": 0.963,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 4.04,
+        "max_err": 0.005
+      },
+      "thr_0.05": {
+        "speedup": 4.19,
+        "max_err": 0.0161
+      },
+      "thr_0.1": {
+        "speedup": 4.47,
+        "max_err": 0.04
+      }
+    },
+    "train_s": 28.3
+  },
+  {
+    "head": "air",
+    "title": "SuperESP-Air",
+    "source": "SYNTH",
+    "classes": [
+      "clean",
+      "co2_high",
+      "gas_leak",
+      "smoke"
+    ],
+    "n_classes": 4,
+    "n_features": 30,
+    "params": 20480,
+    "test_acc": 0.978,
+    "n_test": 360,
+    "abstain_aurc": 0.0,
+    "oracle_aurc": 0.0,
+    "random_aurc": 0.0,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 6.51,
+        "max_err": 0.0041
+      },
+      "thr_0.05": {
+        "speedup": 6.77,
+        "max_err": 0.01
+      },
+      "thr_0.1": {
+        "speedup": 7.28,
+        "max_err": 0.0238
+      }
+    },
+    "train_s": 34.2
+  },
+  {
+    "head": "os_telem",
+    "title": "SuperESP-OS",
+    "source": "SYNTH",
+    "classes": [
+      "normal",
+      "low_memory",
+      "overheating",
+      "wifi_degraded",
+      "power_fault"
+    ],
+    "n_classes": 5,
+    "n_features": 32,
+    "params": 20512,
+    "test_acc": 0.9867,
+    "n_test": 450,
+    "abstain_aurc": 0.0007,
+    "oracle_aurc": 0.0001,
+    "random_aurc": 0.0133,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6633,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 4.16,
+        "max_err": 0.0044
+      },
+      "thr_0.05": {
+        "speedup": 4.27,
+        "max_err": 0.0106
+      },
+      "thr_0.1": {
+        "speedup": 4.47,
+        "max_err": 0.0301
+      }
+    },
+    "train_s": 42.0
+  },
+  {
+    "head": "power",
+    "title": "SuperESP-Power",
+    "source": "SYNTH",
+    "classes": [
+      "off",
+      "resistive",
+      "motor",
+      "electronic"
+    ],
+    "n_classes": 4,
+    "n_features": 24,
+    "params": 20480,
+    "test_acc": 0.9806,
+    "n_test": 360,
+    "abstain_aurc": 0.0007,
+    "oracle_aurc": 0.0002,
+    "random_aurc": 0.0194,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 8.05,
+        "max_err": 0.0026
+      },
+      "thr_0.05": {
+        "speedup": 8.28,
+        "max_err": 0.0142
+      },
+      "thr_0.1": {
+        "speedup": 8.73,
+        "max_err": 0.0325
+      }
+    },
+    "train_s": 28.8
+  },
+  {
+    "head": "occupancy",
+    "title": "SuperESP-Occupancy",
+    "source": "SYNTH",
+    "classes": [
+      "empty",
+      "occupied",
+      "crowded"
+    ],
+    "n_classes": 3,
+    "n_features": 24,
+    "params": 20448,
+    "test_acc": 0.9841,
+    "n_test": 315,
+    "abstain_aurc": 0.0008,
+    "oracle_aurc": 0.0001,
+    "random_aurc": 0.0159,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6617,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 8.01,
+        "max_err": 0.0041
+      },
+      "thr_0.05": {
+        "speedup": 8.15,
+        "max_err": 0.0127
+      },
+      "thr_0.1": {
+        "speedup": 8.55,
+        "max_err": 0.0221
+      }
+    },
+    "train_s": 25.4
+  },
+  {
+    "head": "wearable",
+    "title": "SuperESP-Wearable",
+    "source": "SYNTH",
+    "classes": [
+      "rest",
+      "active",
+      "exercise",
+      "irregular"
+    ],
+    "n_classes": 4,
+    "n_features": 24,
+    "params": 20480,
+    "test_acc": 0.9833,
+    "n_test": 360,
+    "abstain_aurc": 0.0005,
+    "oracle_aurc": 0.0001,
+    "random_aurc": 0.0167,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 8.09,
+        "max_err": 0.0027
+      },
+      "thr_0.05": {
+        "speedup": 8.4,
+        "max_err": 0.0098
+      },
+      "thr_0.1": {
+        "speedup": 9.01,
+        "max_err": 0.0292
+      }
+    },
+    "train_s": 28.7
+  },
+  {
+    "head": "water",
+    "title": "SuperESP-Water",
+    "source": "SYNTH",
+    "classes": [
+      "no_flow",
+      "normal_use",
+      "leak",
+      "burst"
+    ],
+    "n_classes": 4,
+    "n_features": 32,
+    "params": 20480,
+    "test_acc": 0.9889,
+    "n_test": 360,
+    "abstain_aurc": 0.0001,
+    "oracle_aurc": 0.0001,
+    "random_aurc": 0.0111,
+    "coverage_at_5pct_risk": 1.0,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 8.19,
+        "max_err": 0.0046
+      },
+      "thr_0.05": {
+        "speedup": 8.53,
+        "max_err": 0.0114
+      },
+      "thr_0.1": {
+        "speedup": 9.26,
+        "max_err": 0.0344
+      }
+    },
+    "train_s": 34.3
+  },
+  {
+    "head": "forecast",
+    "title": "SuperESP-Forecast",
+    "source": "SYNTH",
+    "classes": [
+      "safe",
+      "later",
+      "soon",
+      "imminent"
+    ],
+    "n_classes": 4,
+    "n_features": 24,
+    "params": 20480,
+    "test_acc": 0.831,
+    "n_test": 420,
+    "abstain_aurc": 0.0554,
+    "oracle_aurc": 0.0152,
+    "random_aurc": 0.169,
+    "coverage_at_5pct_risk": 0.586,
+    "blob_bytes": 6625,
+    "delta": {
+      "applicable": true,
+      "thr_0.02": {
+        "speedup": 8.4,
+        "max_err": 0.0057
+      },
+      "thr_0.05": {
+        "speedup": 9.19,
+        "max_err": 0.0151
+      },
+      "thr_0.1": {
+        "speedup": 10.92,
+        "max_err": 0.0429
+      }
+    },
+    "train_s": 32.5
+  }
+]

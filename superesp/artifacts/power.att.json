@@ -1,0 +1,18 @@
+{
+  "receipt": {
+    "magic": "SESPATT1",
+    "head": "power",
+    "n_classes": 4,
+    "classes": [
+      "off",
+      "resistive",
+      "motor",
+      "electronic"
+    ],
+    "sha256": "204c28309ae07c54122b07e09729794205e7be547ce905d5cc7a0262536bd171",
+    "blob_bytes": 6625,
+    "created": "2026-06-28T01:04:38.982738+00:00",
+    "pubkey": "a668650a5a20dc882053ea9754dc3502663a7379064c40ec9828cd581844ec36"
+  },
+  "signature": "ca6b07e0ddf45d999c7f5f83a3a7ac12f5dedb5647b74ae14f9bef13b3d45299943c5264295c31f6f5f029d7573b925033f757f82d17e49258b3f43ca1d50503"
+}

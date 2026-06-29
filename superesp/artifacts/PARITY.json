@@ -1,0 +1,6 @@
+{
+  "max_abs_diff": 1.430511474609375e-06,
+  "argmax_agree": true,
+  "cases": 10,
+  "blobs_load_in_c": 12
+}
