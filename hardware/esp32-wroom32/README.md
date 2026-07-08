@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # Atome on real silicon — ESP32-WROOM-32
 
 The bundled **944K** Atome checkpoint running on a **physical ESP32-WROOM-32**

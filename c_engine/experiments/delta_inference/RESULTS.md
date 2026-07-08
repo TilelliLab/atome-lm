@@ -1,3 +1,5 @@
+**English** · [Français](RESULTS.fr.md) · [Español](RESULTS.es.md) · [简体中文](RESULTS.zh-CN.md) · [Deutsch](RESULTS.de.md) · [日本語](RESULTS.ja.md) <!-- i18n-switcher -->
+
 # Delta-Inference Experiment — Results
 
 **Date:** 2026-05-19

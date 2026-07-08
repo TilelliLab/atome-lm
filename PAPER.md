@@ -1,3 +1,5 @@
+**English** · [Français](PAPER.fr.md) · [Español](PAPER.es.md) · [简体中文](PAPER.zh-CN.md) · [Deutsch](PAPER.de.md) · [日本語](PAPER.ja.md) <!-- i18n-switcher -->
+
 # Atome LM — architecture for microcontroller-native ternary language models
 
 ## 1. Motivation

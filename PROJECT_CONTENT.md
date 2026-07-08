@@ -1,3 +1,5 @@
+**English** · [Français](PROJECT_CONTENT.fr.md) · [Español](PROJECT_CONTENT.es.md) · [简体中文](PROJECT_CONTENT.zh-CN.md) · [Deutsch](PROJECT_CONTENT.de.md) · [日本語](PROJECT_CONTENT.ja.md) <!-- i18n-switcher -->
+
 # PROJECT_CONTENT.md — Project orientation
 
 Read this first. ~5 minute orientation for anyone (human or agent) coming to the codebase. Saves you from breaking load-bearing invariants this kit cares about.

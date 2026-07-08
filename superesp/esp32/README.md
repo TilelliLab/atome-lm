@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # SuperESP ESP32 application test battery
 
 Test **all 12 SuperESP applications on a real ESP32 in one command**, then get a

@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # SuperESP firmware skeleton (ESP32 / ESP-IDF)
 
 > **Status: BUILD-ONLY skeleton — NOT FLASHED, NOT MEASURED on silicon.**

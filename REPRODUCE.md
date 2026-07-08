@@ -1,3 +1,5 @@
+**English** · [Français](REPRODUCE.fr.md) · [Español](REPRODUCE.es.md) · [简体中文](REPRODUCE.zh-CN.md) · [Deutsch](REPRODUCE.de.md) · [日本語](REPRODUCE.ja.md) <!-- i18n-switcher -->
+
 # Atome LM — Reproduction Guide
 
 Every number on `FRONTIER.md` and `HONEST_RESULTS.md` traces back to a

@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # Atome LLM — vendored C engine
 
 This directory contains the C99 inference engine that runs Atome LLM checkpoints on microcontrollers and on the host. The Python side of the project (`atome_llm/`) trains and exports; the C side here loads the exported `.atome` binary and runs the forward pass on-device.

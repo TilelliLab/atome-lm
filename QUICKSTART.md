@@ -1,3 +1,5 @@
+**English** · [Français](QUICKSTART.fr.md) · [Español](QUICKSTART.es.md) · [简体中文](QUICKSTART.zh-CN.md) · [Deutsch](QUICKSTART.de.md) · [日本語](QUICKSTART.ja.md) <!-- i18n-switcher -->
+
 # Atome LM — Quick Start
 
 The 60-second path from clone to a trained, microcontroller-ready model.

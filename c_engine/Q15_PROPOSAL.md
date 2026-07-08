@@ -1,3 +1,5 @@
+**English** · [Français](Q15_PROPOSAL.fr.md) · [Español](Q15_PROPOSAL.es.md) · [简体中文](Q15_PROPOSAL.zh-CN.md) · [Deutsch](Q15_PROPOSAL.de.md) · [日本語](Q15_PROPOSAL.ja.md) <!-- i18n-switcher -->
+
 # Q15-activations path — design proposal (NOT implemented)
 
 ## Why this exists

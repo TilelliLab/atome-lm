@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # SuperESP — applied Atome-LM for the ESP32 edge
 
 SuperESP turns the Atome tiny ternary (1.58-bit) model into a suite of **applied

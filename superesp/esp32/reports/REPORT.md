@@ -1,3 +1,5 @@
+**English** · [Français](REPORT.fr.md) · [Español](REPORT.es.md) · [简体中文](REPORT.zh-CN.md) · [Deutsch](REPORT.de.md) · [日本語](REPORT.ja.md) <!-- i18n-switcher -->
+
 # SuperESP — application test report
 
 _2026-06-27T17:49:41.108712+00:00_  •  source: **real ESP32 silicon**  •  **12/12 applications PASS**  •  battery completed: True

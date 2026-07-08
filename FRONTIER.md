@@ -1,3 +1,5 @@
+**English** · [Français](FRONTIER.fr.md) · [Español](FRONTIER.es.md) · [简体中文](FRONTIER.zh-CN.md) · [Deutsch](FRONTIER.de.md) · [日本語](FRONTIER.ja.md) <!-- i18n-switcher -->
+
 # Atome LM — Frontier Findings
 
 > **Update 2026-05-11 — scale-up A/B at 944K reverses the headline.**

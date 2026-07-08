@@ -1,3 +1,5 @@
+**English** · [Français](CONTRIBUTING.fr.md) · [Español](CONTRIBUTING.es.md) · [简体中文](CONTRIBUTING.zh-CN.md) · [Deutsch](CONTRIBUTING.de.md) · [日本語](CONTRIBUTING.ja.md) <!-- i18n-switcher -->
+
 # Contributing to Atome LM
 
 Thanks for considering a contribution. This is a small, focused project — a tiny ternary language model + a C99 inference engine that talks to it bit-exactly. Read `PROJECT_CONTENT.md` first; it covers what you must not break.

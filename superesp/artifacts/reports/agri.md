@@ -1,3 +1,5 @@
+**English** · [Français](agri.fr.md) · [Español](agri.es.md) · [简体中文](agri.zh-CN.md) · [Deutsch](agri.de.md) · [日本語](agri.ja.md) <!-- i18n-switcher -->
+
 # SuperESP head report — agri
 
 Held-out TEST accuracy: **0.953** (n=450)  •  abstention AURC **0.0053** (oracle 0.0011, random 0.0467)

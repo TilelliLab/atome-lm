@@ -1,3 +1,5 @@
+**English** · [Français](RELEASE_NOTES_v2.0.fr.md) · [Español](RELEASE_NOTES_v2.0.es.md) · [简体中文](RELEASE_NOTES_v2.0.zh-CN.md) · [Deutsch](RELEASE_NOTES_v2.0.de.md) · [日本語](RELEASE_NOTES_v2.0.ja.md) <!-- i18n-switcher -->
+
 # Atome LM v2 — SuperESP (release notes)
 
 **v2.0 — applied edge-AI layer on the Atome ternary engine.** Ships in this repo

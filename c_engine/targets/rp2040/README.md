@@ -1,3 +1,5 @@
+**English** · [Français](README.fr.md) · [Español](README.es.md) · [简体中文](README.zh-CN.md) · [Deutsch](README.de.md) · [日本語](README.ja.md) <!-- i18n-switcher -->
+
 # Atome LLM on the Raspberry Pi Pico (RP2040)
 
 End-to-end recipe to get a 60 K-parameter ternary language model running

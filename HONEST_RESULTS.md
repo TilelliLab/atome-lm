@@ -1,3 +1,5 @@
+**English** · [Français](HONEST_RESULTS.fr.md) · [Español](HONEST_RESULTS.es.md) · [简体中文](HONEST_RESULTS.zh-CN.md) · [Deutsch](HONEST_RESULTS.de.md) · [日本語](HONEST_RESULTS.ja.md) <!-- i18n-switcher -->
+
 # Atome LM — Honest Results Dossier
 
 > One page, no marketing. What we measured, on what hardware, with what
