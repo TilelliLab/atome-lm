@@ -1,0 +1,5 @@
+hw/impl/
+hw/obj/
+hw/temp/
+hw/src/progmem.v
+*.gprj.user
