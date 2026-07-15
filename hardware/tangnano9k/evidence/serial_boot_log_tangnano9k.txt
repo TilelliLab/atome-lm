@@ -1,0 +1,79 @@
+Atome nano/tiny config -- on-silicon proof-of-execution
+Board : Tang Nano 9K (Gowin GW1NR-9C, GW1NR-LV9QN88PC6/I5)
+Core  : PicoRV32, rv32im, 27 MHz direct board clock, no PLL
+Host  : Fedora Linux, /dev/ttyUSB1 @ 115200 8N1 (FT2232, channel B;
+        channel A / ttyUSB0 is JTAG)
+Build : c_engine/targets/picorv32-tangnano9k, MARCH=rv32im, nano config
+        (d_model=16, layers=2, max_seq=32), firmware.bin = 17512 bytes
+        text, 14452 bytes .bss, no .data
+Engine: c_engine/upstream/atome.c from this repo, unmodified.
+HW    : hardware/tangnano9k/firmware/hw (top_uart_hello.v + progmem.v +
+        picosoc_noflash.v + picorv32.v + simpleuart.v), copied and
+        adapted from FreeRTOS-TetriSaraj's proven UART-only top, that
+        project's own files untouched.
+Model : tools/gen_placeholder_model.py placeholder (structurally valid
+        ATOME01 blob, random untrained weights) -- no trained nano/tiny
+        checkpoint exists in this repo. This run proves the engine
+        loads, runs, and returns control on real hardware; it is NOT a
+        quality/inference-correctness proof.
+Date  : 2026-07-15
+
+*** CORRECTION (written after this log, see
+*** c_engine/targets/picorv32-tangnano9k/README.md "A second
+*** target-side bug" for the full story): the "reading the output"
+*** paragraph below is WRONG. 0xFF (255) is out of range for
+*** ATOME_VOCAB_SIZE=32 -- it is not a decoded token at all. Debug
+*** instrumentation later showed atome_predict_next() was returning
+*** -1 (0xFFFFFFFF) on every call, via its own `!tokens` NULL guard
+*** misfiring: this platform's RAM starts at address 0x00000000, and
+*** g_tokens happened to link to exactly that address, so a perfectly
+*** valid pointer aliased NULL. Fixed in linker.ld (reserve RAM's
+*** first word). This log is left as originally written/captured,
+*** since it's a record of what was observed and believed at the
+*** time -- see the README section above for the corrected story and
+*** what real inference output looks like after this fix.
+
+--- captured UART output (openFPGALoader SRAM flash, then serial read) ---
+
+atome-picorv32 boot
+prompt: 0A 14 05 11 00 19
+generated: FF FF FF FF FF FF FF FF
+done
+
+--- reading the output (ORIGINAL, INCORRECT interpretation -- see CORRECTION above) ---
+
+"0A 14 05 11 00 19" is the hardcoded prompt {10,20,5,17,0,25} from
+firmware.c, printed back in hex -- confirms atome_load() parsed the
+model blob and the token buffer round-trips correctly.
+
+The 8 generated tokens are all 0xFF (255): expected. With random,
+untrained weights, atome_predict_next()'s argmax over 32 vocab logits
+has no reason to vary; the specific constant token is an artifact of
+this placeholder's random seed, not a bug. Re-running with a real
+trained checkpoint (via MODEL_ATOME=path/to/real.atome) is the next
+step for a quality check against the Python reference.
+
+----------------------------------------------------------------------
+NOTE ON rv32im vs rv32imc (see c_engine/targets/picorv32-tangnano9k/README.md
+for the full writeup):
+
+The original plan called for `rv32imc` (compressed ISA) for code
+density. Bisected on this exact hardware: rv32imc firmware boots and
+prints fine below roughly 8 KB, but silently produces zero UART bytes
+once progmem grows past that -- reproduced with a firmware carrying
+NO atome/libm/libgcc code at all (just a padded array), so it is a
+hardware/toolchain interaction, not an atome-lm bug. rv32im does not
+show this at any size tested, including this ~17 KB firmware. This
+target now defaults to rv32im.
+
+HONEST SCOPE
+- Proof-of-execution artifact: the Atome engine (this repo's own
+  c_engine/upstream/atome.c) booting and running to completion on
+  physical PicoRV32/Tang Nano 9K silicon, over real UART.
+- NOT a quality or performance benchmark -- the weights are untrained
+  placeholders (see Model, above) and no cycles/token timing was
+  captured in this run.
+- RAM headroom (1932 B between .bss and the stack top) was not
+  independently verified via a stack-painting build; the firmware
+  running to completion without visible corruption is consistent with
+  but not proof of that margin holding under all inputs.

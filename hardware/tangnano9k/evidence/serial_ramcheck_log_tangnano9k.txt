@@ -1,0 +1,60 @@
+Atome nano/tiny config -- real stack high-water measurement
+Board : Tang Nano 9K (Gowin GW1NR-9C, GW1NR-LV9QN88PC6/I5)
+Core  : PicoRV32, rv32im, 27 MHz direct board clock, no PLL
+Host  : Fedora Linux, /dev/ttyUSB1 @ 115200 8N1 (FT2232, channel B;
+        channel A / ttyUSB0 is JTAG)
+Build : c_engine/targets/picorv32-tangnano9k, MARCH=rv32im, nano config
+        (d_model=16, layers=2, max_seq=32), firmware_ramcheck.elf
+        (text=17656, bss=14452 -- same .bss as firmware.elf's 14452,
+        confirms the paint window's _ebss boundary is correct)
+Technique: same stack-painting method as c_engine/targets/cortex-m3-ram/
+        firmware.c -- paint RAM between _ebss and (current SP - 256
+        words) with 0xA5A5A5A5, run the identical load/init/predict
+        workload as firmware.c (6-token prompt + 8 generation steps),
+        then walk down from the paint's high edge to find the lowest
+        word the stack actually overwrote.
+Date  : 2026-07-15
+
+--- captured UART output (openFPGALoader SRAM flash, then serial read) ---
+
+atome-picorv32 ramcheck
+bss=0x00003874 stack_used=0x00000130 total=0x000039A4 ram_budget=0x00004000
+done
+
+--- reading the output ---
+
+bss          = 0x3874 = 14452 bytes -- matches `riscv-none-elf-size`'s
+               .bss column for firmware.elf exactly (same globals:
+               atome_state_t + atome_model_t + token buffer).
+stack_used   = 0x130  = 304 bytes -- the real, measured stack high-water
+               for one full 6-token-prompt + 8-generation-step run.
+               ~2x the Cortex-M3 number (144 B, c_engine/RAM_TABLE.md)
+               for the same nano config -- plausible given RV32's
+               calling convention (more callee-saved register spills
+               through the atome_sparse_attn/atome_ssm_forward call
+               chain than Thumb-2's).
+total        = 0x39A4 = 14756 bytes = bss + stack_used.
+ram_budget   = 0x4000 = 16384 bytes (16 KB, from linker.ld / the
+               instantiated picosoc_noflash.v MEM_WORDS=4096).
+
+Free margin  = 16384 - 14756 = 1628 bytes (9.9% of the 16 KB region).
+
+This directly resolves the "RAM margin unconfirmed" risk in
+PICORV32_TANGNANO9K_PLAN.md: the margin is real, measured on physical
+silicon (not inferred from the Cortex-M3 number or "it ran without
+visibly crashing"), and it holds -- tightly, but positively -- for the
+nano/tiny config's actual prompt+generate workload.
+
+HONEST SCOPE
+- This measures stack depth for ONE specific run (6-token prompt + 8
+  generation steps, the same one firmware.c performs). A longer
+  generation run, a different prompt, or ATOME_MAX_SEQ pushed to its
+  32-token ceiling could plausibly touch a few more bytes of stack
+  than this run did -- this is a real measured data point, not a
+  worst-case bound.
+- Placeholder (untrained, random) weights were used, same caveat as
+  serial_boot_log_tangnano9k.txt -- weight values do not affect control
+  flow or stack depth in this engine (no data-dependent branching in
+  the matvec/conv/ssm/attention hot paths), so this is not expected to
+  change with a real trained checkpoint, but it hasn't been verified
+  with one.

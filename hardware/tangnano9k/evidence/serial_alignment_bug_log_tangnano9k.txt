@@ -1,0 +1,95 @@
+Atome nano/tiny config -- upstream misaligned-pointer bug, isolated on real hardware
+Board : Tang Nano 9K (Gowin GW1NR-9C, GW1NR-LV9QN88PC6/I5)
+Core  : PicoRV32, rv32im, 27 MHz direct board clock, no PLL
+Host  : Fedora Linux, /dev/ttyUSB1 @ 115200 8N1 (FT2232, channel B)
+Build : c_engine/targets/picorv32-tangnano9k, MARCH=rv32im, nano config
+        (d_model=16, layers=2, max_seq=32), MODEL_ATOME=nano_seed42.atome
+        (real fixed-seed checkpoint, torch.manual_seed(42), not the
+        random placeholder)
+Method: a temporary, local, instrumented copy of c_engine/upstream/atome.c
+        (NOT the real upstream file, NOT committed anywhere in this repo)
+        with UART checkpoints added at every stage of
+        atome_predict_next() / atome_block_forward() / atome_layer_norm(),
+        used only to bisect where execution stops on real hardware. The
+        real upstream/atome.c is never modified.
+Date  : 2026-07-15
+
+--- captured UART output (incremental capture, flush-per-chunk; the run
+    never reaches "done" -- this is the full output, execution stops
+    permanently after the last line shown) ---
+
+debug boot
+sizeof(atome_model_t)=0x000000D0 sizeof(atome_state_t)=0x00003720
+model_atome_len=0x00000577
+atome_load rc=0x00000000
+calling atome_predict_next, n_tokens=0x00000006
+predict_next: guards passed
+predict_next: embedding COMPLETE
+  block_forward enter layer=00000000
+    layer_norm enter
+    gamma_addr=0x001042DB
+    beta_addr=0x0010431B
+    x[0]=0xBE47F3D7
+    mean=0x31000000
+    var=0x3CC33841
+    var+eps=0x3CC34D3A
+    calling sqrtf...
+    sqrtf returned
+    inv_std=0x40CF3FB0
+    reading gamma[i], i=00000000
+[-- nothing further arrives, at any timeout tried (60s, 180s, 240s) --]
+
+--- reading the output ---
+
+atome_load() succeeds (rc=0), the embedding lookup completes, and
+atome_layer_norm()'s mean/variance/sqrtf all compute real, finite,
+sane values (none of the printed bit patterns are NaN/Inf -- e.g.
+inv_std=0x40CF3FB0 decodes to a normal positive float around 6.5).
+sqrtf() itself returns fine. Execution stops at the very next line:
+the first read of params->gamma[i].
+
+gamma_addr=0x001042DB and beta_addr=0x0010431B are both misaligned:
+0xDB mod 4 = 3, 0x1B mod 4 = 3. atome_layer_norm() dereferences
+params->gamma as a `const float*` -- a 32-bit load at a non-4-byte-
+aligned address. PicoRV32 (picorv32.v, CATCH_MISALIGN=1 by default,
+confirmed in this repo's own copy under hardware/tangnano9k/firmware/
+hw/src/ip.cpu/picorv32.v) traps a misaligned word load: with no
+bus-error IRQ configured on this minimal UART-only top (no timer/IRQ
+wiring), the core drops straight into cpu_state_trap, its terminal
+state -- no crash message, no further instructions, nothing more ever
+arrives over UART. That is exactly what this capture shows.
+
+Where the misalignment comes from: the ATOME01 magic is 7 bytes.
+7 mod 4 = 3. Every packed-ternary section in this nano config (its
+dimensions are all powers of two) happens to size out to an exact
+multiple of 4 bytes, so nothing after the magic ever corrects that
+initial 3-byte skew -- it propagates through the entire rest of the
+file. block[0].norm.gamma is the first float* field after the
+embedding table: byte offset 7 + (4 + 128) = 139, and 139 mod 4 = 3,
+exactly matching the measured address. Every gamma/beta/a/b/c_out
+pointer in the file inherits the same skew.
+
+HONEST SCOPE
+- This is a real bug, isolated with real instrumentation on real
+  hardware, not simulated or guessed. The instrumented atome.c copy
+  used to find it is not part of this repo's committed history.
+- The bug lives in c_engine/upstream/atome.c's atome_load() binary
+  parser (the ATOME01 format guarantees no field alignment), not in
+  this target's own code -- confirmed by: (a) this target's own
+  linker.ld/start.s/uart.c/firmware.c have no misaligned access
+  anywhere, and (b) the exact same blob, loaded by the exact same
+  unmodified atome_load(), runs to completion natively on an x86 host
+  (which tolerates unaligned loads in hardware) producing the correct,
+  Python-matching output -- see c_engine/targets/picorv32-tangnano9k/
+  README.md "A third bug" for that native run's output.
+- This is very likely NOT unique to this target's nano config -- the
+  7-byte magic's 3-byte skew is present in every ATOME01 file
+  regardless of model config; it happens to matter here because
+  PicoRV32 (run on real silicon with default settings) is the first
+  target in this repo's history that actually enforces alignment.
+  ARMv7-M (Cortex-M3) and x86 both tolerate unaligned loads in
+  hardware, which is almost certainly why this was never caught
+  before.
+- Not fixed here: fixing it means changing atome_load()'s parsing (or
+  the exporter's byte layout) inside c_engine/upstream/, which
+  CONTRIBUTING.md reserves for upstream changes, not board-target PRs.
